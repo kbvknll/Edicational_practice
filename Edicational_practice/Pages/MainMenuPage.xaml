@@ -1,0 +1,21 @@
+﻿<Page x:Class="Edicational_practice.Pages.MainMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Edicational_practice.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainMenuPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label x:Name="WelcomeLabel" Content="" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+            <Button x:Name="SubjectsBtn" Content="Предметы" Width="200" Height="40" Click="SubjectsBtn_Click"/>
+            <Button x:Name="TeachersBtn" Content="Преподаватели" Width="200" Height="40" Click="TeachersBtn_Click"/>
+            <Button x:Name="ExamsBtn" Content="Экзамены" Width="200" Height="40" Click="ExamsBtn_Click"/>
+            <Button x:Name="DepartmentsBtn" Content="Кафедры" Width="200" Height="40" Click="DepartmentsBtn_Click"/>
+            <Button x:Name="LogoutBtn" Content="Выйти" Width="200" Height="40" Click="LogoutBtn_Click" Margin="0,20,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>

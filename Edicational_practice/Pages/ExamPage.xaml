@@ -1,0 +1,73 @@
+﻿<Page x:Class="Edicational_practice.Pages.ExamPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Edicational_practice.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ExamPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Поиск, фильтрация и сортировка -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <Label Content="Search:"/>
+            <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" Width="100"/>
+            <Label Content="Filter by Subject:"/>
+            <ComboBox x:Name="SubjectFilterCB" DisplayMemberPath="name" SelectionChanged="SubjectFilterCB_SelectionChanged" Width="120">
+                <ComboBoxItem Content="All"/>
+            </ComboBox>
+            <Label Content="Filter by Mark:"/>
+            <ComboBox x:Name="MarkFilterCB" SelectionChanged="MarkFilterCB_SelectionChanged" Width="120">
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="2"/>
+                <ComboBoxItem Content="3"/>
+                <ComboBoxItem Content="4"/>
+                <ComboBoxItem Content="5"/>
+            </ComboBox>
+            <Label Content="Sort by:"/>
+            <ComboBox x:Name="SortColumnCB" SelectionChanged="SortColumnCB_SelectionChanged" Width="120">
+                <ComboBoxItem Content="ID"/>
+                <ComboBoxItem Content="Дата"/>
+                <ComboBoxItem Content="Дисциплина"/>
+                <ComboBoxItem Content="Студент"/>
+                <ComboBoxItem Content="Преподаватель"/>
+                <ComboBoxItem Content="Аудитория"/>
+                <ComboBoxItem Content="Оценка"/>
+            </ComboBox>
+            <Label Content="Sort Direction:" Visibility="Collapsed"/>
+            <ComboBox x:Name="SortDirectionCB" SelectionChanged="SortDirectionCB_SelectionChanged" Width="120" Visibility="Collapsed">
+                <ComboBoxItem Content="Ascending"/>
+                <ComboBoxItem Content="Descending"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="ExamDataGrid" Grid.Row="1" Margin="10" AutoGenerateColumns="False" 
+                  SelectionUnit="FullRow" SelectionMode="Single" IsReadOnly="{Binding IsReadOnly}"
+                  CellEditEnding="ExamDataGrid_CellEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding id_exam}" Header="ID" Width="SizeToHeader" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding date_exam}" Header="Дата" Width="SizeToHeader" />
+                <DataGridTextColumn Binding="{Binding Discipline.name}" Header="Дисциплина" Width="SizeToHeader" />
+                <DataGridTextColumn Binding="{Binding Student.surname}" Header="Студент" Width="SizeToHeader" />
+                <DataGridTextColumn Binding="{Binding Employee.surname}" Header="Преподаватель" Width="SizeToHeader" />
+                <DataGridTextColumn Binding="{Binding auditorium}" Header="Аудитория" Width="SizeToHeader" />
+                <DataGridTextColumn Binding="{Binding mark}" Header="Оценка" Width="SizeToHeader" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button x:Name="AddBt" Content="Добавить" Click="AddExamButton_Click" Margin="10,0,0,0"/>
+            <Button x:Name="DelBt" Content="Удалить" Click="DeleteExamButton_Click" Margin="10,0,0,0"/>
+            <Button x:Name="SaveBt" Content="Сохранить" Click="SaveButton_Click" Margin="10,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
